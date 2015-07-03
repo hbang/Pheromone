@@ -1,0 +1,3 @@
+@interface Cydia : UIApplication
+
+@end
