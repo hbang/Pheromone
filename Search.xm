@@ -19,6 +19,7 @@ BOOL isResigning = NO;
 }
 
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
+	searchBar.text = @"";
 	[searchBar resignFirstResponder];
 }
 
@@ -28,19 +29,8 @@ BOOL isResigning = NO;
 }
 
 %new - (BOOL)searchBarShouldEndEditing:(UISearchBar *)searchBar {
-	[searchBar setShowsCancelButton:YES animated:YES];
-
-	if (!isResigning) {
-		[self useSearch];
-	}
-
+	[searchBar setShowsCancelButton:NO animated:YES];
 	return YES;
-}
-
-- (void)searchBarButtonClicked:(UISearchBar *)searchBar {
-	isResigning = YES;
-	%orig;
-	isResigning = NO;
 }
 
 %end
