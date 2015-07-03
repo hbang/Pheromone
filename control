@@ -1,0 +1,10 @@
+Package: ws.hbang.pheromone
+Name: Pheromone
+Depends: mobilesubstrate, cydia (>= 1.1.19)
+Version: 0.0.1
+Architecture: iphoneos-arm
+Description: Cydia. Done right.
+Maintainer: HASHBANG Productions <support@hbang.ws>
+Author: HASHBANG Productions <support@hbang.ws>
+Support: https://www.hbang.ws/faq/
+Section: Tweaks
