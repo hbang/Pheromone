@@ -23,9 +23,9 @@
 	Package *package = MSHookIvar<Package *>(self, "package_");
 
 	NSString *message = [NSString stringWithFormat:@"Check out %@ by %@ on Cydia:", package.name, package.author.name];
-	NSURL *cydiaURL = [NSURL URLWithString:[NSString stringWithFormat:@"http://cydia.saurik.com/package/%@/", package.id]];
+	NSURL *url = [NSURL URLWithString:package.homepage ?: [NSString stringWithFormat:@"http://cydia.saurik.com/package/%@/", package.id]];
 
-	UIActivityViewController *viewController = [[[UIActivityViewController alloc] initWithActivityItems:@[ message, cydiaURL ] applicationActivities:nil] autorelease];
+	UIActivityViewController *viewController = [[[UIActivityViewController alloc] initWithActivityItems:@[ message, url ] applicationActivities:nil] autorelease];
 	[self.navigationController presentViewController:viewController animated:YES completion:nil];
 }
 
