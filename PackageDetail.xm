@@ -8,10 +8,14 @@
 	%orig;
 
 	if (self.rightButton && !self.isLoading) {
-		[self.navigationItem setRightBarButtonItems:@[
-			self.rightButton,
-			[[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(_pheromone_share)] autorelease]
-		] animated:YES];
+		Package *package = MSHookIvar<Package *>(self, "package_");
+
+		if (package.source) {
+			[self.navigationItem setRightBarButtonItems:@[
+				self.rightButton,
+				[[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(_pheromone_share)] autorelease]
+			] animated:YES];
+		}
 	}
 }
 
