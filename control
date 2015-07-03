@@ -1,7 +1,9 @@
 Package: ws.hbang.pheromone
 Name: Pheromone
 Depends: mobilesubstrate, cydia (>= 1.1.19)
-Version: 0.0.1
+Conflicts: ws.hbang.codling
+Replaces: ws.hbang.codling
+Version: 1.0~beta1
 Architecture: iphoneos-arm
 Description: Cydia. Done right.
 Maintainer: HASHBANG Productions <support@hbang.ws>
