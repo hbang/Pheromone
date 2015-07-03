@@ -1,4 +1,5 @@
 #import "Cydia/Cydia.h"
+#import "Cydia/ProgressController.h"
 
 %hook Cydia
 
@@ -16,6 +17,15 @@
 
 	UIWindow *window = MSHookIvar<UIWindow *>(self, "window_");
 	window.tintColor = tintColor;
+}
+
+%end
+
+%hook ProgressController
+
+- (void)loadView {
+	%orig;
+	self.navigationController.navigationBar.barTintColor = nil;
 }
 
 %end
