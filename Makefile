@@ -1,11 +1,12 @@
 include $(THEOS)/makefiles/common.mk
 
 TWEAK_NAME = Pheromone
-Pheromone_FILES = $(wildcard *.xm)
+Pheromone_FILES = $(wildcard *.xm) $(wildcard *.m)
 Pheromone_FRAMEWORKS = CoreGraphics UIKit
 Pheromone_CFLAGS = -include Global.h
 
 Global.xm_CFLAGS = -DPHEROMONE_GLOBAL_XM
+BOZPongRefreshControl.m_CFLAGS = -fobjc-arc
 
 include $(THEOS_MAKE_PATH)/tweak.mk
 

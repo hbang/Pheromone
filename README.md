@@ -6,4 +6,6 @@ Pheromone is a tweak that changes the behaviour of Cydia. It provides various im
 ## License
 Licensed under [Apache License, version 2.0](https://www.apache.org/licenses/LICENSE-2.0.html).
 
+Uses BOZPongRefreshControl by [boztalay](https://github.com/boztalay), licensed under the [MIT License](https://github.com/boztalay/BOZPongRefreshControl/blob/master/LICENSE).
+
 Uses Compass icon by [Vicons Design](https://thenounproject.com/ViconsDesign), licensed under the [CC-BY 3.0](https://creativecommons.org/licenses/by/3.0/us/)license.
