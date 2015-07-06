@@ -1,6 +1,7 @@
 #import "BOZPongRefreshControl.h"
 #import "Cydia/SourcesController.h"
 #import "Cydia/CydiaDelegate.h"
+#import <UIKit/UIAlertView+Private.h>
 
 BOZPongRefreshControl *refreshControl;
 BOOL refreshWillAppear = NO;
@@ -75,7 +76,19 @@ BOOL hasAppeared = NO;
 
 #pragma mark - Add source
 
-%new - (NSURLRequest *) connection:(NSURLConnection *)connection willSendRequest:(NSURLRequest *)request redirectResponse:(NSURLResponse *)redirectResponse {
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+	if ([alertView.context isEqualToString:@"source"]) {
+		NSURL *url = [NSURL URLWithString:alertView.textField.text];
+
+		if (url && [url.host hasSuffix:@".github.io"] && [url.scheme isEqualToString:@"http"]) {
+			alertView.textField.text = [@"https" stringByAppendingString:[url.absoluteString substringFromIndex:4]];
+		}
+	}
+
+	%orig;
+}
+
+%new - (NSURLRequest *)connection:(NSURLConnection *)connection willSendRequest:(NSURLRequest *)request redirectResponse:(NSURLResponse *)redirectResponse {
 	NSString *href = MSHookIvar<NSString *>(self, "href_");
 
 	if ([request.URL.scheme isEqualToString:@"https"] && [href hasPrefix:@"http://"]) {
