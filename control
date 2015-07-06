@@ -3,7 +3,7 @@ Name: Pheromone
 Depends: mobilesubstrate, cydia (>= 1.1.19)
 Conflicts: ws.hbang.codling
 Replaces: ws.hbang.codling
-Version: 1.0~beta1
+Version: 1.0~beta2
 Architecture: iphoneos-arm
 Description: Cydia. Done right.
 Maintainer: HASHBANG Productions <support@hbang.ws>
