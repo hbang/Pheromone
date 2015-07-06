@@ -1,4 +1,4 @@
-#import "Cydia/CydiaWebViewController.h"
+#import "CydiaWebViewController.h"
 
 @interface ProgressController : CydiaWebViewController
 
