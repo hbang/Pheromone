@@ -4,6 +4,7 @@
 
 BOZPongRefreshControl *refreshControl;
 BOOL refreshWillAppear = NO;
+BOOL hasAppeared = NO;
 
 %hook SourcesController
 
@@ -18,6 +19,8 @@ BOOL refreshWillAppear = NO;
 
 - (void)viewDidAppear:(BOOL)animated {
 	%orig;
+
+	hasAppeared = YES;
 
 	if (refreshWillAppear) {
 		refreshWillAppear = NO;
@@ -45,6 +48,10 @@ BOOL refreshWillAppear = NO;
 		[self.navigationItem setLeftBarButtonItem:[[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addButtonClicked)] autorelease] animated:animated];
 	} else if (delegate.updating) {
 		[self.navigationItem setLeftBarButtonItem:[[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemStop target:self action:@selector(cancelButtonClicked)] autorelease] animated:animated];
+
+		if (!hasAppeared) {
+			refreshWillAppear = YES;
+		}
 	} else {
 		[self.navigationItem setLeftBarButtonItem:[[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(refreshButtonClicked)] autorelease] animated:animated];
 		[refreshControl finishedLoading];
