@@ -18,7 +18,7 @@ BOOL allowContinuing = YES;
 	NSString *href = MSHookIvar<NSString *>(self, "href_");
 
 	if ([[NSURL URLWithString:href].scheme isEqualToString:@"http"]) {
-		UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"You are adding a repository that is not secure." message:@"Data downloaded from this repository will not be encrypted in transit, allowing packages to be modified by a man in the middle (MITM) in order to perform malicious actions on your device.\n\nDo you want to continue?" preferredStyle:UIAlertControllerStyleAlert];
+		UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Pheromone Warning:\nYou are adding a repository that is not secure." message:@"Data downloaded from this repository will not be encrypted in transit, allowing packages to be modified by a man in the middle (MITM) in order to perform malicious actions on your device.\n\nDo you want to continue?" preferredStyle:UIAlertControllerStyleAlert];
 
 		[alertController addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil]];
 		[alertController addAction:[UIAlertAction actionWithTitle:@"Continue" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
