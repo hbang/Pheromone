@@ -4,6 +4,7 @@
 #import <WebKit/DOMHTMLElement.h>
 #import <WebKit/DOMCSSStyleDeclaration.h>
 
+
 UIImage *backgroundImage;
 
 %hook ProgressController
@@ -21,7 +22,18 @@ UIImage *backgroundImage;
 	visualEffectView.frame = darkeningView.frame;
 	[self.view.superview insertSubview:visualEffectView atIndex:0];
 
-	UIImageView *imageView = [[[UIImageView alloc] initWithImage:backgroundImage] autorelease];
+	UIImageView *imageView = [[[UIImageView alloc] init] autorelease];
+
+	if (backgroundImage) {
+
+		[imageView setImage:backgroundImage];
+	}
+
+	else {
+
+		[imageView setImage:[UIImage imageWithContentsOfFile:@"/var/mobile/Library/SpringBoard/HomeBackgroundThumbnail.jpg"]];
+	}
+	
 	imageView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 	imageView.frame = darkeningView.frame;
 	[self.view.superview insertSubview:imageView atIndex:0];
@@ -50,10 +62,14 @@ UIImage *backgroundImage;
 - (void)perform {
 	UIWindow *window = MSHookIvar<UIWindow *>(self, "window_");
 
-	UIGraphicsBeginImageContextWithOptions(window.bounds.size, YES, 0);
-	[window drawViewHierarchyInRect:window.bounds afterScreenUpdates:YES];
-	backgroundImage = [UIGraphicsGetImageFromCurrentImageContext() retain];
-	UIGraphicsEndImageContext();
+	//if wallpaper image is present, use it as blur background
+	if (![[NSFileManager defaultManager] fileExistsAtPath:@"/var/mobile/Library/SpringBoard/HomeBackgroundThumbnail.jpg"]) {
+		
+		UIGraphicsBeginImageContextWithOptions(window.bounds.size, YES, 0);
+		[window drawViewHierarchyInRect:window.bounds afterScreenUpdates:YES];
+		backgroundImage = [UIGraphicsGetImageFromCurrentImageContext() retain];
+		UIGraphicsEndImageContext();
+	}
 
 	%orig;
 }
