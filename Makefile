@@ -4,6 +4,7 @@ TWEAK_NAME = Pheromone
 Pheromone_FILES = $(wildcard *.xm) $(wildcard *.m)
 Pheromone_FRAMEWORKS = CoreGraphics UIKit
 Pheromone_CFLAGS = -include Global.h
+Pheromone_LIBRARIES = cephei
 
 Global.xm_CFLAGS = -DPHEROMONE_GLOBAL_XM
 BOZPongRefreshControl.m_CFLAGS = -fobjc-arc

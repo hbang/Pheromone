@@ -7,6 +7,8 @@
 @property (nonatomic, retain, readonly) MIMEAddress *author;
 @property (nonatomic, retain, readonly) NSString *homepage;
 
+@property (nonatomic, retain, readonly) NSString *installed;
+
 @property (nonatomic, retain, readonly) Source *source;
 
 @end
