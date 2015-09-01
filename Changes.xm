@@ -37,7 +37,7 @@ UIActivityIndicatorView *activityIndicatorView;
 - (void)refreshButtonClicked {
 	self.tabBarController.selectedIndex = 1;
 
-	UINavigationController *navigationController = self.tabBarController.selectedViewController;
+	UINavigationController *navigationController = (UINavigationController *)self.tabBarController.selectedViewController;
 	[(SourcesController *)navigationController.viewControllers[0] _pheromone_beginRefreshFromChanges];
 
 	[self setLeftBarButtonItem];

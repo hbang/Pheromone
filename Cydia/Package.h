@@ -11,4 +11,6 @@
 
 @property (nonatomic, retain, readonly) Source *source;
 
+@property (nonatomic, retain, readonly) NSArray *relations;
+
 @end

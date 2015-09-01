@@ -11,6 +11,9 @@ BOZPongRefreshControl.m_CFLAGS = -fobjc-arc
 
 include $(THEOS_MAKE_PATH)/tweak.mk
 
+#SUBMODULES += prefs
+#include $(THEOS_MAKE_PATH)/aggregate.mk
+
 after-Pheromone-stage::
 	mkdir -p $(THEOS_STAGING_DIR)/Library/Application\ Support/Pheromone.bundle
 	cp -r Resources/ $(THEOS_STAGING_DIR)/Library/Application\ Support/Pheromone.bundle
